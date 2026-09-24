@@ -1,7 +1,9 @@
 # computer-vision-class
 
 ## Intro
-This repository contains code submission for competion in class on Computer Vision
+This repository contains code submission for competion in class on Computer Vision on prediction the right emoji vendor from 7 available options: Apple, Samsung, Google, etc. There is 9000 pictures in the training data, and 9000 pictures in the test data.
+
+The pictures are colored PNG images in different sizes, so some data transformation is required, including grayscaling and resizing. Additionally, this notebook specifically features the training on macbook M1 (or newer) chips
 
 ## Stack
 Stack: Tensorflow, Python 3.11
@@ -13,6 +15,8 @@ Stack: Tensorflow, Python 3.11
 ```cd computer-vision-class```
 
 ```uv sync```
+
+```Choose computer-vision-class kernel in the top right corner of the submission.ipynb notebook```
 
 ## Model Architecture
 
