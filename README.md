@@ -5,8 +5,22 @@ This repository contains code submission for competion in class on Computer Visi
 
 The pictures are colored PNG images in different sizes, so some data transformation is required, including grayscaling and resizing. Additionally, this notebook specifically features the training on macbook M1 (or newer) chips
 
+In this report, we cover our solution to achieve 96% of accuracy on the test set with fine-tuned
+Visual Transformer pretrained by Google and also we tried to achieve the same score with Random Weights initialized CNN Model.
 ## Stack
-Stack: Tensorflow, Python 3.11
+
+| Package | Version |
+|---|---|
+| python | 3.13.15 |
+| tensorflow | 2.20.0 |
+| tf-keras | 2.20.1 |
+| transformers | 4.57.1 |
+| scikit-learn | 1.6.1 |
+| kagglehub | 1.0.2 |
+| numpy | 2.1.3 |
+| pandas | 2.2.3 |
+| pillow | 11.3.0 |
+| matplotlib | 3.10.0 |
 
 ## How to run:
 
@@ -18,57 +32,20 @@ Stack: Tensorflow, Python 3.11
 
 ```Choose computer-vision-class kernel in the top right corner of the submission.ipynb notebook```
 
-## Model Architecture
+```The cleaned version available at emoji_vit_colab_v2_FINAL_REPORT.ipynb```
 
-The existing sequential model architecture is:
-```
-Model: "sequential_3"
-_________________________________________________________________
- Layer (type)                Output Shape              Param #   
-=================================================================
- sequential_2 (Sequential)   (None, 72, 72, 1)         0         
-                                                                 
- conv2d_3 (Conv2D)           (None, 72, 72, 32)        320       
-                                                                 
- batch_normalization_3 (Bat  (None, 72, 72, 32)        128       
- chNormalization)                                                
-                                                                 
- max_pooling2d_3 (MaxPoolin  (None, 35, 35, 32)        0         
- g2D)                                                            
-                                                                 
- conv2d_4 (Conv2D)           (None, 35, 35, 64)        18496     
-                                                                 
- batch_normalization_4 (Bat  (None, 35, 35, 64)        256       
- chNormalization)                                                
-                                                                 
- max_pooling2d_4 (MaxPoolin  (None, 17, 17, 64)        0         
- g2D)                                                            
-                                                                 
- dropout_2 (Dropout)         (None, 17, 17, 64)        0         
-                                                                 
- conv2d_5 (Conv2D)           (None, 17, 17, 128)       73856     
-                                                                 
- batch_normalization_5 (Bat  (None, 17, 17, 128)       512       
- chNormalization)                                                
-                                                                 
- max_pooling2d_5 (MaxPoolin  (None, 8, 8, 128)         0         
- g2D)                                                            
-                                                                 
- flatten_1 (Flatten)         (None, 8192)              0         
-                                                                 
- dense_2 (Dense)             (None, 128)               1048704   
-                                                                 
- dropout_3 (Dropout)         (None, 128)               0         
-                                                                 
- dense_3 (Dense)             (None, 7)                 903       
-                                                                 
-=================================================================
-Total params: 1143175 (4.36 MB)
-Trainable params: 1142727 (4.36 MB)
-Non-trainable params: 448 (1.75 KB)
-_________________________________________________________________
-```
+## Approach
 
-## Accuracy
-Based on the 9000 images from training dataset, we have been able to achieve ±90% accuracy and descently low loss. On the test data, our accuracy level is 88.95%
-![Accuracy stats](Stats.png)
+In our case, fine-tuning process was represented by adding Dense layer with 7 neurons to the fixed model weights. 
+
+Preprocessing: transparent background filled with white, resized to 224x224, normalised with the model's mean/std; no augmentation 
+
+Class imbalance: class-weighted cross-entropy (apple: 0.73, google: 0.75, whatsapp: 0.86, facebook: 0.85, samsung: 0.79, mozilla: 3.55, messenger: 2.43)
+
+Validation: stratified 80/20 train/validation split, seed 42
+
+## Notebooks
+
+```submission.ipynb``` is human-made notebook to explore notions of CV and different architectures in order to get the best score.
+
+```emoji_vit_colab_v2_FINAL_REPORT.ipynb``` is a 'cleaned' notebook to satisfy criteria of unviresity project.
