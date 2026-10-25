@@ -7,6 +7,11 @@ The pictures are colored PNG images in different sizes, so some data transformat
 
 In this report, we cover our solution to achieve 96% of accuracy on the test set with fine-tuned
 Visual Transformer pretrained by Google and also we tried to achieve the same score with Random Weights initialized CNN Model.
+
+## Group Members 
+Georg RIEKHAKAINEN, Isabelle LIEW YU CHEN, Norelle CHY-GLASSCOCK,
+and Thien Anh NGUYEN
+
 ## Stack
 
 | Package | Version |
