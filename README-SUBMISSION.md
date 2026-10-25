@@ -6,6 +6,9 @@
 - **Task:** predict which provider drew each emoji image (apple, google, whatsapp, facebook, samsung, mozilla, messenger). Metric: accuracy.
 - The exploratory work (custom CNN, ResNet transfer learning, first ViT runs) was carried out in https://github.com/georgerieh/computer-vision-class (submission.ipynb); this notebook is the cleaned final pipeline used for our submission and report.
 
+## Report
+Read our report [here](CV_Report.pdf)
+
 ## Approach
 
 | Step | Choice |
